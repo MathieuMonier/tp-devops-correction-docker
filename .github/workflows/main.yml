@@ -26,14 +26,6 @@ jobs:
         run:  mvn clean verify
         working-directory: simple-api
 
-  name: Build and Push Docker Images
-
-on:
-  push:
-    branches:
-      - main  # Exécuter seulement sur la branche main
-
-jobs:
   build-and-push:
     runs-on: ubuntu-latest
     steps:
