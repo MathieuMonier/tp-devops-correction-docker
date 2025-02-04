@@ -6,6 +6,7 @@ on:
     workflows: ["CI devops 2025"]
     types:
       - completed
+  push:
     branches: 
       - main
   pull_request:
