@@ -12,7 +12,7 @@ on:
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
-    if: github.event.push.head_branch == 'main'
+    if: ${{ github.ref == 'refs/heads/main' }}
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
