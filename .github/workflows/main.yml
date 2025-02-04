@@ -27,6 +27,7 @@ jobs:
         working-directory: simple-api
 
   build-and-push:
+    need : test-backend
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
