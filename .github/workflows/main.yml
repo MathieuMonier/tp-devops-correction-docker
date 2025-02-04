@@ -25,3 +25,42 @@ jobs:
       - name: Build and test with Maven
         run:  mvn clean verify
         working-directory: simple-api
+
+  name: Build and Push Docker Images
+
+on:
+  push:
+    branches:
+      - main  # Exécuter seulement sur la branche main
+
+jobs:
+  build-and-push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Login to DockerHub
+        run: echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
+
+      - name: Build and Push Backend Image
+        uses: docker/build-push-action@v3
+        with:
+          context: ./simple-api  # Chemin vers le Dockerfile de l’API
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/tp-devops-simple-api:latest
+          push: true
+
+      - name: Build and Push Database Image
+        uses: docker/build-push-action@v3
+        with:
+          context: ./database  # Chemin vers le Dockerfile de la BDD
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/tp-devops-database:latest
+          push: true
+
+      - name: Build and Push HTTP Server Image
+        uses: docker/build-push-action@v3
+        with:
+          context: ./httpd  # Chemin vers le Dockerfile du serveur HTTP
+          tags: ${{ secrets.DOCKERHUB_USERNAME }}/tp-devops-httpd:latest
+          push: true
+
