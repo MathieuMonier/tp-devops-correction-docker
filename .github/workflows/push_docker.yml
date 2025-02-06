@@ -1,6 +1,9 @@
 name: push&build
 
 on:  
+  push:
+    branches: 
+      - main 
   workflow_run:
     workflows: ["CI devops 2025"]
     types:
@@ -8,9 +11,7 @@ on:
     branches: 
       - main
   pull_request:
-  push:
-    branches: 
-      - main 
+  
     
 jobs:
   build-and-push:
