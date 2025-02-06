@@ -1,0 +1,13 @@
+- name: Démarrer l'API
+  docker_container:
+    name: simple-api
+    image: "mathieumonier/tp-devops-simple-api:latest"
+    pull: yes
+    state: started
+    env:
+      DATABASE_HOST: db
+      DATABASE_PASSWORD: pwd
+    networks:
+      - name: my-network
+      - name: network-front
+

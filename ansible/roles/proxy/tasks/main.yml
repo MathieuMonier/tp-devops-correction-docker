@@ -1,0 +1,14 @@
+
+- name: Démarrer le serveur HTTP
+  become: true
+  docker_container:
+    name: httpd
+    image: "mathieumonier/tp-devops-httpd:latest"
+    pull: yes
+    state: started
+    restart_policy: always
+    ports:
+      - "80:80"
+    networks:
+      - name : network-front
+    detach: true
