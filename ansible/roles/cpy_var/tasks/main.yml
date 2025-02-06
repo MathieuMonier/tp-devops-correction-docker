@@ -1,0 +1,8 @@
+- name: Copier le fichier .env pour la base de données
+  become: true
+  template:
+    src: /home/monier/Documents/Devops/tp-devops-correction-docker/ansible/.env
+    dest: /.env
+    owner: admin
+    group: admin
+    mode: '0644'

@@ -1,0 +1,8 @@
+- name: start front Container
+  docker_container:
+    name: front
+    image: mathieumonier/tp-devops-front:latest
+    pull: yes
+    networks:
+      - name: network-front
+    

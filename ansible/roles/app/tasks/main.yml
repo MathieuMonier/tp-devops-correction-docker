@@ -4,9 +4,7 @@
     image: "mathieumonier/tp-devops-simple-api:latest"
     pull: yes
     state: started
-    env:
-      DATABASE_HOST: db
-      DATABASE_PASSWORD: pwd
+    env_file: /.env
     networks:
       - name: my-network
       - name: network-front

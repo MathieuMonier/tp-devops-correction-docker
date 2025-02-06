@@ -3,10 +3,7 @@
     name: db
     image: mathieumonier/tp-devops-database:latest
     pull: yes
-    env:
-      POSTGRES_USER: usr
-      POSTGRES_PASSWORD: pwd
-      POSTGRES_DB: db
+    env_file: /.env
     networks:
       - name: my-network
     volumes:

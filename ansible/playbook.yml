@@ -3,8 +3,10 @@
   become: true
 
   roles:
+    - cpy_var
     - network
     - database
     - app
+    - front
     - proxy
 
