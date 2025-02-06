@@ -45,7 +45,7 @@ jobs:
       - name: Build and Push front
         uses: docker/build-push-action@v3
         with:
-          context: ./front  # Chemin vers le Dockerfile du serveur HTTP
+          context: ./front # Chemin vers le Dockerfile du serveur HTTP
           tags: ${{ secrets.DOCKERHUB_USERNAME }}/tp-devops-front:latest
           push: true
   
